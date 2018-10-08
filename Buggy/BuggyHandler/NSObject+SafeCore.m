@@ -8,12 +8,12 @@
 
 #import "NSObject+SafeCore.h"
 #import "NSObject+KVOSafe.h"
+#import <Sentry/Sentry.h>
 
 static  LSSafeProtectorLogType ls_safe_logType=LSSafeProtectorLogTypeAll;
 static  LSSafeProtectorBlock lsSafeProtectorBlock;
 
 @implementation NSObject (SafeCore)
-
 
 +(void)openAllSafeProtectorWithIsDebug:(BOOL)isDebug block:(LSSafeProtectorBlock)block
 {
@@ -99,22 +99,15 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
 
 + (void)safe_logCrashWithException:(NSException *)exception crashType:(LSSafeProtectorCrashType)crashType
 {
-    // 堆栈数据
-    NSArray *callStackSymbolsArr = [NSThread callStackSymbols];
-    
     //获取在哪个类的哪个方法中实例化的数组
-    NSString *mainMessage = [self safe_getMainCallStackSymbolMessageWithCallStackSymbolArray: callStackSymbolsArr index:2 first:YES];
+    NSString *mainMessage = [self safe_getMainCallStackSymbolMessageWithCallStackSymbolArray:exception.callStackSymbols index:2 first:YES];
     
     if (mainMessage == nil) {
         mainMessage = @"崩溃方法定位失败,请您查看函数调用栈来查找crash原因";
     }
     
-    NSString *crashName = [NSString stringWithFormat:@"\t\t[Crash Type]: %@",exception.name];
-    
-    NSString *crashReason = [NSString stringWithFormat:@"\t\t[Crash Reason]: %@",exception.reason];;
-    NSString *crashLocation = [NSString stringWithFormat:@"\t\t[Crash Location]: %@",mainMessage];
-    
-    NSString *fullMessage = [NSString stringWithFormat:@"\n------------------------------------  Crash START -------------------------------------\n%@\n%@\n%@\n函数堆栈:\n%@\n------------------------------------   Crash END  -----------------------------------------", crashName, crashReason, crashLocation, exception.callStackSymbols];
+    SentryClient *client = [SentryClient sharedClient];
+    [client reportUserException:exception.name reason:exception.reason language:@"Objective-C" lineOfCode:mainMessage stackTrace:exception.callStackSymbols logAllThreads:NO terminateProgram:NO];
     
     NSMutableDictionary *userInfo=[NSMutableDictionary dictionary];
     userInfo[@"callStackSymbols"]=[NSString stringWithFormat:@"%@",exception.callStackSymbols];
@@ -122,13 +115,6 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
     NSException *newException = [NSException exceptionWithName:exception.name reason:exception.reason userInfo:userInfo];
     if (lsSafeProtectorBlock) {
         lsSafeProtectorBlock(newException,crashType);
-    }
-    LSSafeProtectorLogType logType=ls_safe_logType;
-    if (logType==LSSafeProtectorLogTypeNone) {
-    }
-    else if (logType==LSSafeProtectorLogTypeAll) {
-        LSSafeLog(@"%@", fullMessage);
-        NSAssert(NO, @"检测到崩溃，详情请查看上面信息");
     }
 }
 

@@ -3,3 +3,4 @@
 */.DS_Store
 Demo/BuggyDemo/Pods/
 Demo/BuggyDemo/Pods/*
+*.xcuserstate
