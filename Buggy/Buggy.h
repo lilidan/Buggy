@@ -10,4 +10,6 @@
 
 @interface Buggy : NSObject
 
++ (void)install;
+
 @end

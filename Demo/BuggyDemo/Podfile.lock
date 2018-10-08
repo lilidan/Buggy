@@ -15,15 +15,20 @@ PODS:
 DEPENDENCIES:
   - Buggy (from `../../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CocoaLumberjack
+    - Sentry
+
 EXTERNAL SOURCES:
   Buggy:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  Buggy: 43d6e88291a9dfbd85d8b5be2b36a061078fc25d
+  Buggy: de799fd5294408de0e2a42e5be5c33fd6630c3d5
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Sentry: 44b85e768f435ede4d12ea279af588ff275c3939
 
 PODFILE CHECKSUM: 8aaee4e3e94eba649e158a0ef36a8113462c8eb1
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.5.3

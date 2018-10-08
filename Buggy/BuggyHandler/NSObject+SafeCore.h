@@ -41,7 +41,9 @@ typedef enum : NSUInteger {
     LSSafeProtectorCrashTypeNSMutableData,
     LSSafeProtectorCrashTypeNSOrderedSet,
     LSSafeProtectorCrashTypeNSMutableOrderedSet,
-    
+    LSSafeProtectorCrashTypeUINavigationPush,
+    LSSafeProtectorCrashTypeUIViewMainThread,
+    LSSafeProtectorCrashTypeNSTimerNotDealloc
 } LSSafeProtectorCrashType;
 
 

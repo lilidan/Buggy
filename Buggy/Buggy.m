@@ -26,6 +26,21 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 @implementation Buggy
 
++ (instancetype)sharedInstance
+{
+    static Buggy *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[Buggy alloc] init];
+    });
+    return sharedInstance;
+}
+
++ (void)install
+{
+    [[self sharedInstance] installCrashHandler];
+}
+
 - (void)installCrashHandler
 {
     DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger

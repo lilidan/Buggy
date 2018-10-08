@@ -39,6 +39,8 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
             [NSMutableOrderedSet openSafeProtector];
             [NSData openSafeProtector];
             [NSMutableData openSafeProtector];
+            [UINavigationController openSafeProtector];
+            [UIView openSafeProtector];
             if (isDebug) {
                 ls_safe_logType=LSSafeProtectorLogTypeAll;
             }else{
@@ -95,7 +97,6 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
         method_exchangeImplementations(originalMethod, newMethod);
     }
 }
-
 
 + (void)safe_logCrashWithException:(NSException *)exception crashType:(LSSafeProtectorCrashType)crashType
 {
