@@ -1,17 +1,22 @@
 //
 //  AppDelegate.h
-//  BuggyDemo
 //
-//  Created by sgcy on 2018/10/8.
-//  Copyright © 2018年 sgcy. All rights reserved.
+//  Created by Karl Stenerud on 2012-03-04.
 //
 
 #import <UIKit/UIKit.h>
+#import "Crasher.h"
+#import "CrashToHandle.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) UIWindow* window;
 
+@property (retain, nonatomic) UIViewController* viewController;
+
+@property(nonatomic, readwrite, assign) BOOL crashInHandler;
+
+@property (nonatomic, readwrite, retain) Crasher* crasher;
+@property (nonatomic,strong) CrashToHandle*crashToHanlder;
 
 @end
-

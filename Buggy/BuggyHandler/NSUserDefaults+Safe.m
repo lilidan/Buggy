@@ -37,8 +37,21 @@
         
         [self safe_exchangeInstanceMethod:dClass originalSel:@selector(boolForKey:) newSel:@selector(safe_boolForKey:)];
        
+        [self safe_exchangeInstanceMethod:dClass originalSel:@selector(setObject:forKey:) newSel:@selector(safe_setObject:forKey:)];
     });
 }
+
+- (void)safe_setObject:(id)value forKey:(NSString *)defaultName
+{
+    if(defaultName){
+        [self safe_setObject:value forKey:defaultName];
+    }else{
+        NSString *reason=[NSString stringWithFormat:@"NSUserDefaults %@ key can`t be nil",NSStringFromSelector(_cmd)];
+        NSException *exception=[NSException exceptionWithName:reason reason:reason userInfo:nil];
+        LSSafeProtectionCrashLog(exception,LSSafeProtectorCrashTypeNSUserDefaults);
+    }
+}
+
 -(id)safe_objectForKey:(NSString *)defaultName
 {
     id obj=nil;

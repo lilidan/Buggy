@@ -11,6 +11,7 @@
 #import <Sentry/Sentry.h>
 #import <Sentry/SentryBreadcrumbTracker.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#import "LSSafeProtector.h"
 
 #if DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -55,6 +56,9 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     if (nil != error) {
         NSLog(@"%@", error);
     }
+    [LSSafeProtector openSafeProtectorWithIsDebug:NO block:^(NSException *exception, LSSafeProtectorCrashType crashType) {
+        
+    }];
 }
 
 - (NSDictionary *)queryDDLog

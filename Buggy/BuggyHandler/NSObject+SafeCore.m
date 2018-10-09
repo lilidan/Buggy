@@ -100,6 +100,11 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
 
 + (void)safe_logCrashWithException:(NSException *)exception crashType:(LSSafeProtectorCrashType)crashType
 {
+    NSArray *stacks = exception.callStackSymbols;
+    if (!stacks) {
+        stacks = [NSThread callStackSymbols];
+    }
+
     //获取在哪个类的哪个方法中实例化的数组
     NSString *mainMessage = [self safe_getMainCallStackSymbolMessageWithCallStackSymbolArray:exception.callStackSymbols index:2 first:YES];
     
@@ -108,7 +113,7 @@ static  LSSafeProtectorBlock lsSafeProtectorBlock;
     }
     
     SentryClient *client = [SentryClient sharedClient];
-    [client reportUserException:exception.name reason:exception.reason language:@"Objective-C" lineOfCode:mainMessage stackTrace:exception.callStackSymbols logAllThreads:NO terminateProgram:NO];
+    [client reportUserException:exception.name reason:exception.reason language:@"Objective-C" lineOfCode:mainMessage stackTrace:stacks logAllThreads:NO terminateProgram:NO];
     
     NSMutableDictionary *userInfo=[NSMutableDictionary dictionary];
     userInfo[@"callStackSymbols"]=[NSString stringWithFormat:@"%@",exception.callStackSymbols];

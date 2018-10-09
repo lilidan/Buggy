@@ -8,17 +8,57 @@
 
 /* Begin PBXBuildFile section */
 		97A76DA9C9AB1F3682D0D15C /* Pods_BuggyDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9002D3BA9280E89FF2DC8A8 /* Pods_BuggyDemo.framework */; };
+		D62CF601216C35CF000E834D /* AppDelegate+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D62CF600216C35CE000E834D /* AppDelegate+UI.m */; };
+		D62CF604216C35D7000E834D /* CommandTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D62CF603216C35D7000E834D /* CommandTVC.m */; };
+		D62CF607216C35FF000E834D /* Crasher.mm in Sources */ = {isa = PBXBuildFile; fileRef = D62CF606216C35FF000E834D /* Crasher.mm */; };
 		D6375F7F216AF76000EF7F4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6375F7E216AF76000EF7F4A /* AppDelegate.m */; };
 		D6375F82216AF76000EF7F4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6375F81216AF76000EF7F4A /* ViewController.m */; };
 		D6375F85216AF76000EF7F4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6375F83216AF76000EF7F4A /* Main.storyboard */; };
 		D6375F87216AF76100EF7F4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6375F86216AF76100EF7F4A /* Assets.xcassets */; };
 		D6375F8A216AF76100EF7F4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6375F88216AF76100EF7F4A /* LaunchScreen.storyboard */; };
 		D6375F8D216AF76100EF7F4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6375F8C216AF76100EF7F4A /* main.m */; };
+		D6901B33216C36A200DB2A41 /* CRLCrashNXPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B03216C369F00DB2A41 /* CRLCrashNXPage.m */; };
+		D6901B34216C36A200DB2A41 /* CRLFramelessDWARF.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B04216C369F00DB2A41 /* CRLFramelessDWARF.m */; };
+		D6901B35216C36A200DB2A41 /* CRLCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B07216C369F00DB2A41 /* CRLCrash.m */; };
+		D6901B36216C36A200DB2A41 /* CRLCrashGarbage.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B09216C369F00DB2A41 /* CRLCrashGarbage.m */; };
+		D6901B37216C36A200DB2A41 /* CRLFramelessDWARF_arm32.S in Sources */ = {isa = PBXBuildFile; fileRef = D6901B0D216C369F00DB2A41 /* CRLFramelessDWARF_arm32.S */; };
+		D6901B38216C36A200DB2A41 /* CRLCrashOverwriteLinkRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B0E216C369F00DB2A41 /* CRLCrashOverwriteLinkRegister.m */; };
+		D6901B39216C36A200DB2A41 /* CRLCrashAsyncSafeThread.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B12216C369F00DB2A41 /* CRLCrashAsyncSafeThread.m */; };
+		D6901B3A216C36A200DB2A41 /* CRLCrashTrap.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B14216C36A000DB2A41 /* CRLCrashTrap.m */; };
+		D6901B3B216C36A200DB2A41 /* CRLCrashCXXException.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6901B16216C36A000DB2A41 /* CRLCrashCXXException.mm */; };
+		D6901B3C216C36A200DB2A41 /* CRLCrashStackGuard.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B17216C36A000DB2A41 /* CRLCrashStackGuard.m */; };
+		D6901B3D216C36A200DB2A41 /* CRLCrashSmashStackBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B19216C36A000DB2A41 /* CRLCrashSmashStackBottom.m */; };
+		D6901B3E216C36A200DB2A41 /* CRLCrashCorruptObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B1D216C36A000DB2A41 /* CRLCrashCorruptObjC.m */; };
+		D6901B3F216C36A200DB2A41 /* CRLCrashROPage.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B1F216C36A000DB2A41 /* CRLCrashROPage.m */; };
+		D6901B40216C36A200DB2A41 /* CRLFramelessDWARF_i386.s in Sources */ = {isa = PBXBuildFile; fileRef = D6901B23216C36A100DB2A41 /* CRLFramelessDWARF_i386.s */; };
+		D6901B41216C36A200DB2A41 /* CRLFramelessDWARF_x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = D6901B24216C36A100DB2A41 /* CRLFramelessDWARF_x86_64.s */; };
+		D6901B42216C36A200DB2A41 /* CRLFramelessDWARF_arm64.s in Sources */ = {isa = PBXBuildFile; fileRef = D6901B25216C36A100DB2A41 /* CRLFramelessDWARF_arm64.s */; };
+		D6901B43216C36A200DB2A41 /* CRLCrashPrivInst.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B27216C36A100DB2A41 /* CRLCrashPrivInst.m */; };
+		D6901B44216C36A200DB2A41 /* CRLCrashUndefInst.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B28216C36A100DB2A41 /* CRLCrashUndefInst.m */; };
+		D6901B45216C36A200DB2A41 /* CRLCrashSmashStackTop.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2A216C36A100DB2A41 /* CRLCrashSmashStackTop.m */; };
+		D6901B46216C36A200DB2A41 /* CRLCrashNULL.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2B216C36A100DB2A41 /* CRLCrashNULL.m */; };
+		D6901B47216C36A200DB2A41 /* CRLCrashCorruptMalloc.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2C216C36A100DB2A41 /* CRLCrashCorruptMalloc.m */; };
+		D6901B48216C36A200DB2A41 /* CRLCrashReleasedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2D216C36A100DB2A41 /* CRLCrashReleasedObject.m */; };
+		D6901B49216C36A200DB2A41 /* CRLCrashObjCException.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2E216C36A200DB2A41 /* CRLCrashObjCException.m */; };
+		D6901B4A216C36A200DB2A41 /* CRLCrashObjCMsgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B2F216C36A200DB2A41 /* CRLCrashObjCMsgSend.m */; };
+		D6901B4B216C36A200DB2A41 /* CRLCrashNSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B30216C36A200DB2A41 /* CRLCrashNSLog.m */; };
+		D6901B4C216C36A200DB2A41 /* CRLCrashAbort.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B32216C36A200DB2A41 /* CRLCrashAbort.m */; };
+		D6901B4F216C40D300DB2A41 /* CrashToHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B4E216C40D300DB2A41 /* CrashToHandle.m */; };
+		D6901B56216C415500DB2A41 /* NSNotificationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B52216C415500DB2A41 /* NSNotificationTestObject.m */; };
+		D6901B57216C415500DB2A41 /* LSViewTestKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B53216C415500DB2A41 /* LSViewTestKVO.m */; };
+		D6901B58216C415500DB2A41 /* LSViewTestKVOSuper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61C06D5046FE9BC7D526F8F5 /* Pods-BuggyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuggyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BuggyDemo/Pods-BuggyDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F2688FBCD4ECC386528131 /* Pods-BuggyDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuggyDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BuggyDemo/Pods-BuggyDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D62CF5FF216C35CE000E834D /* AppDelegate+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+UI.h"; sourceTree = "<group>"; };
+		D62CF600216C35CE000E834D /* AppDelegate+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+UI.m"; sourceTree = "<group>"; };
+		D62CF602216C35D7000E834D /* CommandTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandTVC.h; sourceTree = "<group>"; };
+		D62CF603216C35D7000E834D /* CommandTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandTVC.m; sourceTree = "<group>"; };
+		D62CF605216C35FF000E834D /* Crasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crasher.h; sourceTree = "<group>"; };
+		D62CF606216C35FF000E834D /* Crasher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Crasher.mm; sourceTree = "<group>"; };
+		D62CF608216C360E000E834D /* LoadableCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		D6375F7A216AF76000EF7F4A /* BuggyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuggyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6375F7D216AF76000EF7F4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D6375F7E216AF76000EF7F4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -29,6 +69,62 @@
 		D6375F89216AF76100EF7F4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6375F8B216AF76100EF7F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6375F8C216AF76100EF7F4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D6901B03216C369F00DB2A41 /* CRLCrashNXPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashNXPage.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNXPage.m; sourceTree = "<group>"; };
+		D6901B04216C369F00DB2A41 /* CRLFramelessDWARF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLFramelessDWARF.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF.m; sourceTree = "<group>"; };
+		D6901B05216C369F00DB2A41 /* CRLCrashNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashNULL.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNULL.h; sourceTree = "<group>"; };
+		D6901B06216C369F00DB2A41 /* CRLCrashNSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashNSLog.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNSLog.h; sourceTree = "<group>"; };
+		D6901B07216C369F00DB2A41 /* CRLCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrash.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrash.m; sourceTree = "<group>"; };
+		D6901B08216C369F00DB2A41 /* CRLCrashAsyncSafeThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashAsyncSafeThread.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashAsyncSafeThread.h; sourceTree = "<group>"; };
+		D6901B09216C369F00DB2A41 /* CRLCrashGarbage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashGarbage.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashGarbage.m; sourceTree = "<group>"; };
+		D6901B0A216C369F00DB2A41 /* CRLCrashReleasedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashReleasedObject.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashReleasedObject.h; sourceTree = "<group>"; };
+		D6901B0B216C369F00DB2A41 /* CRLCrashNXPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashNXPage.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNXPage.h; sourceTree = "<group>"; };
+		D6901B0C216C369F00DB2A41 /* CRLFramelessDWARF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLFramelessDWARF.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF.h; sourceTree = "<group>"; };
+		D6901B0D216C369F00DB2A41 /* CRLFramelessDWARF_arm32.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = CRLFramelessDWARF_arm32.S; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF_arm32.S; sourceTree = "<group>"; };
+		D6901B0E216C369F00DB2A41 /* CRLCrashOverwriteLinkRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashOverwriteLinkRegister.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashOverwriteLinkRegister.m; sourceTree = "<group>"; };
+		D6901B0F216C369F00DB2A41 /* CRLCrashObjCException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashObjCException.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashObjCException.h; sourceTree = "<group>"; };
+		D6901B10216C369F00DB2A41 /* CRLCrashSmashStackTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashSmashStackTop.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashSmashStackTop.h; sourceTree = "<group>"; };
+		D6901B11216C369F00DB2A41 /* CRLCrashPrivInst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashPrivInst.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashPrivInst.h; sourceTree = "<group>"; };
+		D6901B12216C369F00DB2A41 /* CRLCrashAsyncSafeThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashAsyncSafeThread.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashAsyncSafeThread.m; sourceTree = "<group>"; };
+		D6901B13216C369F00DB2A41 /* CRLCrashCorruptObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashCorruptObjC.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCorruptObjC.h; sourceTree = "<group>"; };
+		D6901B14216C36A000DB2A41 /* CRLCrashTrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashTrap.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashTrap.m; sourceTree = "<group>"; };
+		D6901B15216C36A000DB2A41 /* CRLCrashUndefInst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashUndefInst.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashUndefInst.h; sourceTree = "<group>"; };
+		D6901B16216C36A000DB2A41 /* CRLCrashCXXException.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CRLCrashCXXException.mm; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCXXException.mm; sourceTree = "<group>"; };
+		D6901B17216C36A000DB2A41 /* CRLCrashStackGuard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashStackGuard.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashStackGuard.m; sourceTree = "<group>"; };
+		D6901B18216C36A000DB2A41 /* CRLCrashCorruptMalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashCorruptMalloc.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCorruptMalloc.h; sourceTree = "<group>"; };
+		D6901B19216C36A000DB2A41 /* CRLCrashSmashStackBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashSmashStackBottom.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashSmashStackBottom.m; sourceTree = "<group>"; };
+		D6901B1A216C36A000DB2A41 /* CRLCrashGarbage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashGarbage.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashGarbage.h; sourceTree = "<group>"; };
+		D6901B1B216C36A000DB2A41 /* CRLCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrash.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrash.h; sourceTree = "<group>"; };
+		D6901B1C216C36A000DB2A41 /* CRLCrashAbort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashAbort.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashAbort.h; sourceTree = "<group>"; };
+		D6901B1D216C36A000DB2A41 /* CRLCrashCorruptObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashCorruptObjC.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCorruptObjC.m; sourceTree = "<group>"; };
+		D6901B1E216C36A000DB2A41 /* CRLCrashOverwriteLinkRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashOverwriteLinkRegister.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashOverwriteLinkRegister.h; sourceTree = "<group>"; };
+		D6901B1F216C36A000DB2A41 /* CRLCrashROPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashROPage.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashROPage.m; sourceTree = "<group>"; };
+		D6901B20216C36A000DB2A41 /* CRLCrashSmashStackBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashSmashStackBottom.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashSmashStackBottom.h; sourceTree = "<group>"; };
+		D6901B21216C36A000DB2A41 /* CRLCrashTrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashTrap.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashTrap.h; sourceTree = "<group>"; };
+		D6901B22216C36A100DB2A41 /* CRLCrashCXXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashCXXException.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCXXException.h; sourceTree = "<group>"; };
+		D6901B23216C36A100DB2A41 /* CRLFramelessDWARF_i386.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = CRLFramelessDWARF_i386.s; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF_i386.s; sourceTree = "<group>"; };
+		D6901B24216C36A100DB2A41 /* CRLFramelessDWARF_x86_64.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = CRLFramelessDWARF_x86_64.s; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF_x86_64.s; sourceTree = "<group>"; };
+		D6901B25216C36A100DB2A41 /* CRLFramelessDWARF_arm64.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = CRLFramelessDWARF_arm64.s; path = ../../../../../crashTest/CrashLib/CrashLib/CRLFramelessDWARF_arm64.s; sourceTree = "<group>"; };
+		D6901B26216C36A100DB2A41 /* CRLCrashObjCMsgSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashObjCMsgSend.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashObjCMsgSend.h; sourceTree = "<group>"; };
+		D6901B27216C36A100DB2A41 /* CRLCrashPrivInst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashPrivInst.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashPrivInst.m; sourceTree = "<group>"; };
+		D6901B28216C36A100DB2A41 /* CRLCrashUndefInst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashUndefInst.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashUndefInst.m; sourceTree = "<group>"; };
+		D6901B29216C36A100DB2A41 /* CRLCrashROPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashROPage.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashROPage.h; sourceTree = "<group>"; };
+		D6901B2A216C36A100DB2A41 /* CRLCrashSmashStackTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashSmashStackTop.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashSmashStackTop.m; sourceTree = "<group>"; };
+		D6901B2B216C36A100DB2A41 /* CRLCrashNULL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashNULL.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNULL.m; sourceTree = "<group>"; };
+		D6901B2C216C36A100DB2A41 /* CRLCrashCorruptMalloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashCorruptMalloc.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashCorruptMalloc.m; sourceTree = "<group>"; };
+		D6901B2D216C36A100DB2A41 /* CRLCrashReleasedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashReleasedObject.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashReleasedObject.m; sourceTree = "<group>"; };
+		D6901B2E216C36A200DB2A41 /* CRLCrashObjCException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashObjCException.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashObjCException.m; sourceTree = "<group>"; };
+		D6901B2F216C36A200DB2A41 /* CRLCrashObjCMsgSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashObjCMsgSend.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashObjCMsgSend.m; sourceTree = "<group>"; };
+		D6901B30216C36A200DB2A41 /* CRLCrashNSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashNSLog.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashNSLog.m; sourceTree = "<group>"; };
+		D6901B31216C36A200DB2A41 /* CRLCrashStackGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRLCrashStackGuard.h; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashStackGuard.h; sourceTree = "<group>"; };
+		D6901B32216C36A200DB2A41 /* CRLCrashAbort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRLCrashAbort.m; path = ../../../../../crashTest/CrashLib/CrashLib/CRLCrashAbort.m; sourceTree = "<group>"; };
+		D6901B4D216C40D300DB2A41 /* CrashToHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashToHandle.h; sourceTree = "<group>"; };
+		D6901B4E216C40D300DB2A41 /* CrashToHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashToHandle.m; sourceTree = "<group>"; };
+		D6901B50216C415500DB2A41 /* NSNotificationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNotificationTestObject.h; sourceTree = "<group>"; };
+		D6901B51216C415500DB2A41 /* LSViewTestKVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSViewTestKVO.h; sourceTree = "<group>"; };
+		D6901B52216C415500DB2A41 /* NSNotificationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNotificationTestObject.m; sourceTree = "<group>"; };
+		D6901B53216C415500DB2A41 /* LSViewTestKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSViewTestKVO.m; sourceTree = "<group>"; };
+		D6901B54216C415500DB2A41 /* LSViewTestKVOSuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSViewTestKVOSuper.h; sourceTree = "<group>"; };
+		D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSViewTestKVOSuper.m; sourceTree = "<group>"; };
 		F9002D3BA9280E89FF2DC8A8 /* Pods_BuggyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BuggyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +157,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D62CF609216C361E000E834D /* CrashLib */ = {
+			isa = PBXGroup;
+			children = (
+				D6901B1B216C36A000DB2A41 /* CRLCrash.h */,
+				D6901B07216C369F00DB2A41 /* CRLCrash.m */,
+				D6901B1C216C36A000DB2A41 /* CRLCrashAbort.h */,
+				D6901B32216C36A200DB2A41 /* CRLCrashAbort.m */,
+				D6901B08216C369F00DB2A41 /* CRLCrashAsyncSafeThread.h */,
+				D6901B12216C369F00DB2A41 /* CRLCrashAsyncSafeThread.m */,
+				D6901B18216C36A000DB2A41 /* CRLCrashCorruptMalloc.h */,
+				D6901B2C216C36A100DB2A41 /* CRLCrashCorruptMalloc.m */,
+				D6901B13216C369F00DB2A41 /* CRLCrashCorruptObjC.h */,
+				D6901B1D216C36A000DB2A41 /* CRLCrashCorruptObjC.m */,
+				D6901B22216C36A100DB2A41 /* CRLCrashCXXException.h */,
+				D6901B16216C36A000DB2A41 /* CRLCrashCXXException.mm */,
+				D6901B1A216C36A000DB2A41 /* CRLCrashGarbage.h */,
+				D6901B09216C369F00DB2A41 /* CRLCrashGarbage.m */,
+				D6901B06216C369F00DB2A41 /* CRLCrashNSLog.h */,
+				D6901B30216C36A200DB2A41 /* CRLCrashNSLog.m */,
+				D6901B05216C369F00DB2A41 /* CRLCrashNULL.h */,
+				D6901B2B216C36A100DB2A41 /* CRLCrashNULL.m */,
+				D6901B0B216C369F00DB2A41 /* CRLCrashNXPage.h */,
+				D6901B03216C369F00DB2A41 /* CRLCrashNXPage.m */,
+				D6901B0F216C369F00DB2A41 /* CRLCrashObjCException.h */,
+				D6901B2E216C36A200DB2A41 /* CRLCrashObjCException.m */,
+				D6901B26216C36A100DB2A41 /* CRLCrashObjCMsgSend.h */,
+				D6901B2F216C36A200DB2A41 /* CRLCrashObjCMsgSend.m */,
+				D6901B1E216C36A000DB2A41 /* CRLCrashOverwriteLinkRegister.h */,
+				D6901B0E216C369F00DB2A41 /* CRLCrashOverwriteLinkRegister.m */,
+				D6901B11216C369F00DB2A41 /* CRLCrashPrivInst.h */,
+				D6901B27216C36A100DB2A41 /* CRLCrashPrivInst.m */,
+				D6901B0A216C369F00DB2A41 /* CRLCrashReleasedObject.h */,
+				D6901B2D216C36A100DB2A41 /* CRLCrashReleasedObject.m */,
+				D6901B29216C36A100DB2A41 /* CRLCrashROPage.h */,
+				D6901B1F216C36A000DB2A41 /* CRLCrashROPage.m */,
+				D6901B20216C36A000DB2A41 /* CRLCrashSmashStackBottom.h */,
+				D6901B19216C36A000DB2A41 /* CRLCrashSmashStackBottom.m */,
+				D6901B10216C369F00DB2A41 /* CRLCrashSmashStackTop.h */,
+				D6901B2A216C36A100DB2A41 /* CRLCrashSmashStackTop.m */,
+				D6901B31216C36A200DB2A41 /* CRLCrashStackGuard.h */,
+				D6901B17216C36A000DB2A41 /* CRLCrashStackGuard.m */,
+				D6901B21216C36A000DB2A41 /* CRLCrashTrap.h */,
+				D6901B14216C36A000DB2A41 /* CRLCrashTrap.m */,
+				D6901B15216C36A000DB2A41 /* CRLCrashUndefInst.h */,
+				D6901B28216C36A100DB2A41 /* CRLCrashUndefInst.m */,
+				D6901B0D216C369F00DB2A41 /* CRLFramelessDWARF_arm32.S */,
+				D6901B25216C36A100DB2A41 /* CRLFramelessDWARF_arm64.s */,
+				D6901B23216C36A100DB2A41 /* CRLFramelessDWARF_i386.s */,
+				D6901B24216C36A100DB2A41 /* CRLFramelessDWARF_x86_64.s */,
+				D6901B0C216C369F00DB2A41 /* CRLFramelessDWARF.h */,
+				D6901B04216C369F00DB2A41 /* CRLFramelessDWARF.m */,
+			);
+			path = CrashLib;
+			sourceTree = "<group>";
+		};
 		D6375F71216AF76000EF7F4A = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +233,26 @@
 		D6375F7C216AF76000EF7F4A /* BuggyDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D62CF609216C361E000E834D /* CrashLib */,
+				D62CF608216C360E000E834D /* LoadableCategory.h */,
+				D62CF602216C35D7000E834D /* CommandTVC.h */,
+				D62CF603216C35D7000E834D /* CommandTVC.m */,
+				D62CF5FF216C35CE000E834D /* AppDelegate+UI.h */,
+				D62CF600216C35CE000E834D /* AppDelegate+UI.m */,
 				D6375F7D216AF76000EF7F4A /* AppDelegate.h */,
 				D6375F7E216AF76000EF7F4A /* AppDelegate.m */,
 				D6375F80216AF76000EF7F4A /* ViewController.h */,
 				D6375F81216AF76000EF7F4A /* ViewController.m */,
+				D62CF605216C35FF000E834D /* Crasher.h */,
+				D62CF606216C35FF000E834D /* Crasher.mm */,
+				D6901B4D216C40D300DB2A41 /* CrashToHandle.h */,
+				D6901B4E216C40D300DB2A41 /* CrashToHandle.m */,
+				D6901B51216C415500DB2A41 /* LSViewTestKVO.h */,
+				D6901B53216C415500DB2A41 /* LSViewTestKVO.m */,
+				D6901B54216C415500DB2A41 /* LSViewTestKVOSuper.h */,
+				D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */,
+				D6901B50216C415500DB2A41 /* NSNotificationTestObject.h */,
+				D6901B52216C415500DB2A41 /* NSNotificationTestObject.m */,
 				D6375F83216AF76000EF7F4A /* Main.storyboard */,
 				D6375F86216AF76100EF7F4A /* Assets.xcassets */,
 				D6375F88216AF76100EF7F4A /* LaunchScreen.storyboard */,
@@ -107,6 +274,7 @@
 				D6375F77216AF76000EF7F4A /* Frameworks */,
 				D6375F78216AF76000EF7F4A /* Resources */,
 				2AD9195B683BEAE913EB536B /* [CP] Embed Pods Frameworks */,
+				656BECB63C5DAF363BB5FECA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,6 +353,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BuggyDemo/Pods-BuggyDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		656BECB63C5DAF363BB5FECA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BuggyDemo/Pods-BuggyDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D27E4D1C80E2216BCD747353 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -210,9 +393,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6901B3B216C36A200DB2A41 /* CRLCrashCXXException.mm in Sources */,
+				D6901B4A216C36A200DB2A41 /* CRLCrashObjCMsgSend.m in Sources */,
+				D62CF601216C35CF000E834D /* AppDelegate+UI.m in Sources */,
+				D6901B43216C36A200DB2A41 /* CRLCrashPrivInst.m in Sources */,
+				D6901B39216C36A200DB2A41 /* CRLCrashAsyncSafeThread.m in Sources */,
+				D6901B46216C36A200DB2A41 /* CRLCrashNULL.m in Sources */,
+				D6901B35216C36A200DB2A41 /* CRLCrash.m in Sources */,
+				D6901B38216C36A200DB2A41 /* CRLCrashOverwriteLinkRegister.m in Sources */,
+				D6901B58216C415500DB2A41 /* LSViewTestKVOSuper.m in Sources */,
 				D6375F82216AF76000EF7F4A /* ViewController.m in Sources */,
+				D6901B37216C36A200DB2A41 /* CRLFramelessDWARF_arm32.S in Sources */,
+				D6901B44216C36A200DB2A41 /* CRLCrashUndefInst.m in Sources */,
+				D62CF607216C35FF000E834D /* Crasher.mm in Sources */,
+				D62CF604216C35D7000E834D /* CommandTVC.m in Sources */,
+				D6901B41216C36A200DB2A41 /* CRLFramelessDWARF_x86_64.s in Sources */,
 				D6375F8D216AF76100EF7F4A /* main.m in Sources */,
+				D6901B3F216C36A200DB2A41 /* CRLCrashROPage.m in Sources */,
+				D6901B3C216C36A200DB2A41 /* CRLCrashStackGuard.m in Sources */,
+				D6901B47216C36A200DB2A41 /* CRLCrashCorruptMalloc.m in Sources */,
+				D6901B3D216C36A200DB2A41 /* CRLCrashSmashStackBottom.m in Sources */,
+				D6901B57216C415500DB2A41 /* LSViewTestKVO.m in Sources */,
+				D6901B49216C36A200DB2A41 /* CRLCrashObjCException.m in Sources */,
+				D6901B4C216C36A200DB2A41 /* CRLCrashAbort.m in Sources */,
+				D6901B42216C36A200DB2A41 /* CRLFramelessDWARF_arm64.s in Sources */,
+				D6901B56216C415500DB2A41 /* NSNotificationTestObject.m in Sources */,
+				D6901B34216C36A200DB2A41 /* CRLFramelessDWARF.m in Sources */,
 				D6375F7F216AF76000EF7F4A /* AppDelegate.m in Sources */,
+				D6901B48216C36A200DB2A41 /* CRLCrashReleasedObject.m in Sources */,
+				D6901B33216C36A200DB2A41 /* CRLCrashNXPage.m in Sources */,
+				D6901B45216C36A200DB2A41 /* CRLCrashSmashStackTop.m in Sources */,
+				D6901B3A216C36A200DB2A41 /* CRLCrashTrap.m in Sources */,
+				D6901B4F216C40D300DB2A41 /* CrashToHandle.m in Sources */,
+				D6901B40216C36A200DB2A41 /* CRLFramelessDWARF_i386.s in Sources */,
+				D6901B36216C36A200DB2A41 /* CRLCrashGarbage.m in Sources */,
+				D6901B3E216C36A200DB2A41 /* CRLCrashCorruptObjC.m in Sources */,
+				D6901B4B216C36A200DB2A41 /* CRLCrashNSLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +572,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7LUMTSRB5;
 				INFOPLIST_FILE = BuggyDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,6 +591,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7LUMTSRB5;
 				INFOPLIST_FILE = BuggyDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
