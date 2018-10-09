@@ -37,19 +37,19 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     return sharedInstance;
 }
 
-+ (void)install
++ (void)installWithSentryToken:(NSString *)sentryToken
 {
-    [[self sharedInstance] installCrashHandler];
+    [[self sharedInstance] installCrashHandlerWithSentryToken:sentryToken];
 }
 
-- (void)installCrashHandler
+- (void)installCrashHandlerWithSentryToken:(NSString *)sentryToken
 {
     DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
     [DDLog addLogger:fileLogger];
     self.logger = fileLogger;
     
     NSError *error = nil;
-    SentryClient *client = [[SentryClient alloc] initWithDsn:@"https://c57c6ad155a04955b934e4f164e655b7@sentry.io/1279289" didFailWithError:&error];
+    SentryClient *client = [[SentryClient alloc] initWithDsn:sentryToken didFailWithError:&error];
     SentryClient.sharedClient = client;
     SentryClient.sharedClient.extra = [self queryDDLog];
     [SentryClient.sharedClient startCrashHandlerWithError:&error];

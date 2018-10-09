@@ -10,6 +10,6 @@
 
 @interface Buggy : NSObject
 
-+ (void)install;
++ (void)installWithSentryToken:(NSString *)sentryToken;
 
 @end
