@@ -11,5 +11,7 @@
 @interface Buggy : NSObject
 
 + (void)installWithSentryToken:(NSString *)sentryToken;
++ (void)reportError:(NSError *)error;
++ (void)reportLog;
 
 @end

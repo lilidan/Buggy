@@ -31,7 +31,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 {
     static Buggy *sharedInstance = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    dispatch_once(&onceToken, ^{ 
         sharedInstance = [[Buggy alloc] init];
     });
     return sharedInstance;
@@ -102,5 +102,9 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     return [dic copy];
 }
 
++ (void)reportError:(NSError *)error
+{
+    
+}
 
 @end
