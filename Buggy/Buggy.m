@@ -104,7 +104,22 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 + (void)reportError:(NSError *)error
 {
-    
+    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
+    event.message = error.localizedDescription;
+    event.extra = [[self sharedInstance] queryDDLog];
+    [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
+        
+    }];
+}
+
++ (void)reportLog
+{
+    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityDebug];
+    event.message = @"UploadLog";
+    event.extra = [[self sharedInstance] queryDDLog];
+    [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 @end
