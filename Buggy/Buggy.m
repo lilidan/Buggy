@@ -12,6 +12,7 @@
 #import <Sentry/SentryBreadcrumbTracker.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LSSafeProtector.h"
+#import "CommonEventTracker.h"
 
 #if DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -22,7 +23,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 @interface Buggy()
 
 @property (nonatomic,strong) DDFileLogger *logger;
-
+@property (nonatomic,strong) CommonEventTracker *eventTracker;
 @end
 
 @implementation Buggy
@@ -33,6 +34,10 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{ 
         sharedInstance = [[Buggy alloc] init];
+        DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
+        [DDLog addLogger:fileLogger];
+        sharedInstance.logger = fileLogger;
+        sharedInstance.eventTracker = [[CommonEventTracker alloc] init];
     });
     return sharedInstance;
 }
@@ -44,10 +49,6 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 - (void)installCrashHandlerWithSentryToken:(NSString *)sentryToken
 {
-    DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
-    [DDLog addLogger:fileLogger];
-    self.logger = fileLogger;
-    
     NSError *error = nil;
     SentryClient *client = [[SentryClient alloc] initWithDsn:sentryToken didFailWithError:&error];
     SentryClient.sharedClient = client;
@@ -106,9 +107,9 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 {
     SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
     event.message = error.localizedDescription;
+    event.tags = error.userInfo;
     event.extra = [[self sharedInstance] queryDDLog];
     [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
-        
     }];
 }
 
@@ -118,8 +119,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     event.message = @"UploadLog";
     event.extra = [[self sharedInstance] queryDDLog];
     [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
-        
     }];
 }
+
 
 @end
