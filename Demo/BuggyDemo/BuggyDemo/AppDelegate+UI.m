@@ -434,6 +434,22 @@ MAKE_CATEGORIES_LOADABLE(AppDelegate_UI)
           [self.crasher userDefinedCrash];
       }]];
     
+    [commands addObject:
+     [CommandEntry commandWithName:@"FOOM"
+                     accessoryType:UITableViewCellAccessoryNone
+                             block:^(__unused UIViewController* controller)
+      {
+          [self.crasher FOOM];
+      }]];
+    
+    [commands addObject:
+     [CommandEntry commandWithName:@"Block Main Queue"
+                     accessoryType:UITableViewCellAccessoryNone
+                             block:^(__unused UIViewController* controller)
+      {
+          [self.crasher blockMainQueue];
+      }]];
+    
     
     return commands;
 }
