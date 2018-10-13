@@ -262,8 +262,10 @@ int g_crasher_denominator = 0;
 
 - (void)FOOM
 {
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
     for (int i = 0; i < 1000000; i++) {
         NSObject *objc = [[NSObject alloc] init];
+        [arr addObject:objc];
     }
 }
 
