@@ -28,8 +28,8 @@
     self.window.rootViewController = [self createRootViewController];
     [self.window makeKeyAndVisible];
     
-    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:101 userInfo:@{NSLocalizedDescriptionKey:@"errorrrrtest"}];
-    [Buggy reportError:error];
+//    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:101 userInfo:@{NSLocalizedDescriptionKey:@"errorrrrtest"}];
+//    [Buggy reportError:error];
     return YES;
 }
 
