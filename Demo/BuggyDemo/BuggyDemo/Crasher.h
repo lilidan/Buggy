@@ -42,4 +42,8 @@
 
 - (void) throwUncaughtCPPException;
 
+- (void) FOOM;
+
+- (void)blockMainQueue;
+
 @end
