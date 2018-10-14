@@ -9,4 +9,7 @@
 
 @interface UIBlockTracker : NSObject
 
++ (instancetype)sharedInstance;
+- (void)start;
+
 @end

@@ -90,7 +90,7 @@
         ) {
         return NSNotFound;
     }
-    return taskInfo.phys_footprint / 1024.0 / 1024.0;
+    return taskInfo.phys_footprint / 1024.0 / 1024.0 / 1024.0 / 1024.0;
 }
 
 @end

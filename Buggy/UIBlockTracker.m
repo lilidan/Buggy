@@ -16,12 +16,13 @@
 #import <mach/processor_info.h>
 #import <mach/mach_host.h>
 
+#import "Buggy.h"
+
 
 @interface UIBlockTracker ()
 {
     int timeoutCount;
     CFRunLoopObserverRef observer;
-    float cpu_usage;
 @public
     dispatch_semaphore_t semaphore;
     CFRunLoopActivity activity;
@@ -45,7 +46,6 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     UIBlockTracker *moniotr = (__bridge UIBlockTracker*)info;
     
     moniotr->activity = activity;
-    
     dispatch_semaphore_t semaphore = moniotr->semaphore;
     dispatch_semaphore_signal(semaphore);
 }
@@ -70,19 +70,19 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     
     // 注册RunLoop状态观察
     CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
-    observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
-                                       kCFRunLoopAllActivities,
-                                       YES,
-                                       0,
-                                       &runLoopObserverCallBack,
-                                       &context);
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                                            kCFRunLoopAllActivities,
+                                                            YES,
+                                                            0,
+                                                            &runLoopObserverCallBack,
+                                                            &context);
     CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
     
     // 在子线程监控时长
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         while (YES)
         {
-            long st = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 50*NSEC_PER_MSEC));
+            long st = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100*NSEC_PER_MSEC));
             if (st != 0)
             {
                 if (!observer)
@@ -97,6 +97,9 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
                 {
                     if (++timeoutCount < 5)
                         continue;
+                    
+                    NSError *error = [NSError errorWithDomain:@"UIApplicationDidMainRunloopBlock" code:6667 userInfo:@{NSLocalizedDescriptionKey:@"UIApplicationDidMainRunloopBlock",@"cpuUsage":@([self getCpuUsage])}];
+                    [Buggy reportError:error];
                 }
             }
             timeoutCount = 0;
@@ -124,7 +127,7 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     if (kr != KERN_SUCCESS) {
         return -1;
     }
-    cpu_usage = 0;
+    float cpu_usage = 0;
     
     for (int i = 0; i < thread_count; i++)
     {

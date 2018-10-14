@@ -263,17 +263,19 @@ int g_crasher_denominator = 0;
 - (void)FOOM
 {
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 1000000; i++) {
-        NSObject *objc = [[NSObject alloc] init];
-        [arr addObject:objc];
-    }
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.005 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        for (int i = 0 ; i< 10000; i++) {
+            NSObject *objc = [[NSObject alloc] init];
+            [arr addObject:objc];
+        }
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
+
 
 - (void)blockMainQueue
 {
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        NSLog(@"");
-    });
+
 }
 
 @end

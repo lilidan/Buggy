@@ -13,6 +13,8 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LSSafeProtector.h"
 #import "CommonEventTracker.h"
+#import "MemoryTracker.h"
+#import "UIBlockTracker.h"
 
 #if DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -38,6 +40,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
         [DDLog addLogger:fileLogger];
         sharedInstance.logger = fileLogger;
         sharedInstance.eventTracker = [[CommonEventTracker alloc] init];
+        [MemoryTracker sharedInstance];
+        [[UIBlockTracker sharedInstance] start];
     });
     return sharedInstance;
 }
@@ -109,6 +113,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     event.message = error.localizedDescription;
     event.tags = error.userInfo;
     event.extra = [[self sharedInstance] queryDDLog];
+    [[SentryClient sharedClient] appendStacktraceToEvent:event];
     [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
     }];
 }

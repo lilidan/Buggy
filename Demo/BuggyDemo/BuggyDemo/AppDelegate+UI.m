@@ -30,6 +30,8 @@
 #import "CRLCrashSmashStackBottom.h"
 #import "CRLCrashSmashStackTop.h"
 #import "CRLFramelessDWARF.h"
+#import "UIBlockTableViewController.h"
+
 
 
 #import <objc/runtime.h>
@@ -447,7 +449,9 @@ MAKE_CATEGORIES_LOADABLE(AppDelegate_UI)
                      accessoryType:UITableViewCellAccessoryNone
                              block:^(__unused UIViewController* controller)
       {
-          [self.crasher blockMainQueue];
+          UIBlockTableViewController *blockVC = [[UIBlockTableViewController alloc] init];
+          [(UINavigationController *)self.window.rootViewController pushViewController:blockVC animated:YES];
+          
       }]];
     
     

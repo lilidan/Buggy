@@ -47,6 +47,7 @@
 		D6901B56216C415500DB2A41 /* NSNotificationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B52216C415500DB2A41 /* NSNotificationTestObject.m */; };
 		D6901B57216C415500DB2A41 /* LSViewTestKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B53216C415500DB2A41 /* LSViewTestKVO.m */; };
 		D6901B58216C415500DB2A41 /* LSViewTestKVOSuper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */; };
+		D6EE056B217357D200F10E53 /* UIBlockTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EE056A217357D200F10E53 /* UIBlockTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +126,8 @@
 		D6901B53216C415500DB2A41 /* LSViewTestKVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSViewTestKVO.m; sourceTree = "<group>"; };
 		D6901B54216C415500DB2A41 /* LSViewTestKVOSuper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSViewTestKVOSuper.h; sourceTree = "<group>"; };
 		D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSViewTestKVOSuper.m; sourceTree = "<group>"; };
+		D6EE0569217357D200F10E53 /* UIBlockTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBlockTableViewController.h; sourceTree = "<group>"; };
+		D6EE056A217357D200F10E53 /* UIBlockTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIBlockTableViewController.m; sourceTree = "<group>"; };
 		F9002D3BA9280E89FF2DC8A8 /* Pods_BuggyDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BuggyDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -253,6 +256,8 @@
 				D6901B55216C415500DB2A41 /* LSViewTestKVOSuper.m */,
 				D6901B50216C415500DB2A41 /* NSNotificationTestObject.h */,
 				D6901B52216C415500DB2A41 /* NSNotificationTestObject.m */,
+				D6EE0569217357D200F10E53 /* UIBlockTableViewController.h */,
+				D6EE056A217357D200F10E53 /* UIBlockTableViewController.m */,
 				D6375F83216AF76000EF7F4A /* Main.storyboard */,
 				D6375F86216AF76100EF7F4A /* Assets.xcassets */,
 				D6375F88216AF76100EF7F4A /* LaunchScreen.storyboard */,
@@ -399,6 +404,7 @@
 				D6901B43216C36A200DB2A41 /* CRLCrashPrivInst.m in Sources */,
 				D6901B39216C36A200DB2A41 /* CRLCrashAsyncSafeThread.m in Sources */,
 				D6901B46216C36A200DB2A41 /* CRLCrashNULL.m in Sources */,
+				D6EE056B217357D200F10E53 /* UIBlockTableViewController.m in Sources */,
 				D6901B35216C36A200DB2A41 /* CRLCrash.m in Sources */,
 				D6901B38216C36A200DB2A41 /* CRLCrashOverwriteLinkRegister.m in Sources */,
 				D6901B58216C415500DB2A41 /* LSViewTestKVOSuper.m in Sources */,
