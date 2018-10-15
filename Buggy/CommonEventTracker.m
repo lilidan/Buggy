@@ -27,7 +27,6 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(event:) name:UIApplicationWillEnterForegroundNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(event:) name:UIApplicationDidEnterBackgroundNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(event:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-        DDLogInfo(@"Buggy Did init");
         [self swizzleSendAction];
         [self swizzleViewDidAppear];
     }

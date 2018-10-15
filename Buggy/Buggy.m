@@ -8,6 +8,7 @@
 
 #import "Buggy.h"
 
+#import <FBAllocationTracker/FBAllocationTracker.h>
 #import <Sentry/Sentry.h>
 #import <Sentry/SentryBreadcrumbTracker.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
@@ -37,6 +38,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{ 
         sharedInstance = [[Buggy alloc] init];
+        [[FBAllocationTrackerManager sharedManager] startTrackingAllocations];
         DDFileLogger *fileLogger = [[DDFileLogger alloc] init]; // File Logger
         [DDLog addLogger:fileLogger];
         sharedInstance.logger = fileLogger;
@@ -115,10 +117,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 + (void)reportError:(NSError *)error withStackFrame:(BOOL)withStackFrame
 {
-    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
-    event.message = error.localizedDescription;
-    event.tags = error.userInfo;
-    event.extra = [[self sharedInstance] queryDDLog];
+    SentryEvent *event = [self generateEventWithError:error];
     if (withStackFrame) {
         [[SentryClient sharedClient] snapshotStacktrace:^{
             [[SentryClient sharedClient] appendStacktraceToEvent:event];
@@ -133,10 +132,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 + (void)reportErrorWithMainStackFrame:(NSError *)error
 {
-    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
-    event.message = error.localizedDescription;
-    event.tags = error.userInfo;
-    event.extra = [[self sharedInstance] queryDDLog];
+    SentryEvent *event = [self generateEventWithError:error];
     NSArray *mainStackFrames = [BSBacktraceLogger bs_backtraceOfMainThread];
     SentryThread *thread = [[SentryThread alloc] initWithThreadId:@(0)];
     SentryStacktrace *stackTrace = [[SentryStacktrace alloc] initWithFrames:mainStackFrames registers:@{}];
@@ -145,6 +141,28 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
     }];
 }
+
+
++ (SentryEvent *)generateEventWithError:(NSError *)error
+{
+    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
+    event.message = error.localizedDescription;
+    event.extra = [[self sharedInstance] queryDDLog];
+    if (error.userInfo[@"extra"]) {
+        NSMutableDictionary *mutableDic = [[NSMutableDictionary alloc] initWithDictionary:event.extra];
+        mutableDic[@"extra"] = error.userInfo[@"extra"];
+        event.extra = [mutableDic copy];
+        
+        NSMutableDictionary *mutableUserInfo = [[NSMutableDictionary alloc] initWithDictionary:error.userInfo];
+        [mutableUserInfo removeObjectForKey:@"extra"];
+        event.tags = [mutableUserInfo copy];
+    }else{
+        event.tags = error.userInfo;
+    }
+    return event;
+}
+
+
 
 + (void)reportLog
 {
