@@ -23,10 +23,14 @@
 {
     int timeoutCount;
     CFRunLoopObserverRef observer;
+    
 @public
     dispatch_semaphore_t semaphore;
     CFRunLoopActivity activity;
 }
+
+@property (nonatomic,strong) NSDate *lastReportTime;
+
 @end
 
 @implementation UIBlockTracker
@@ -98,8 +102,11 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
                     if (++timeoutCount < 5)
                         continue;
                     
-                    NSError *error = [NSError errorWithDomain:@"UIApplicationDidMainRunloopBlock" code:6667 userInfo:@{NSLocalizedDescriptionKey:@"UIApplicationDidMainRunloopBlock",@"cpuUsage":@([self getCpuUsage])}];
-                    [Buggy reportError:error];
+                    if (!self.lastReportTime || [[NSDate date] timeIntervalSinceDate:self.lastReportTime] > 10.f) {
+                        NSError *error = [NSError errorWithDomain:@"UIApplicationDidMainRunloopBlock4" code:6667 userInfo:@{NSLocalizedDescriptionKey:@"UIApplicationDidMainRunloopBlock4",@"cpuUsage":@([self getCpuUsage])}];
+                        [Buggy reportErrorWithMainStackFrame:error];
+                    }
+                    self.lastReportTime = [NSDate date];
                 }
             }
             timeoutCount = 0;

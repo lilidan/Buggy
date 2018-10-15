@@ -15,6 +15,7 @@
 #import "CommonEventTracker.h"
 #import "MemoryTracker.h"
 #import "UIBlockTracker.h"
+#import "BSBacktraceLogger.h"
 
 #if DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -109,11 +110,38 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 + (void)reportError:(NSError *)error
 {
+    [self reportError:error withStackFrame:NO];
+}
+
++ (void)reportError:(NSError *)error withStackFrame:(BOOL)withStackFrame
+{
     SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
     event.message = error.localizedDescription;
     event.tags = error.userInfo;
     event.extra = [[self sharedInstance] queryDDLog];
-    [[SentryClient sharedClient] appendStacktraceToEvent:event];
+    if (withStackFrame) {
+        [[SentryClient sharedClient] snapshotStacktrace:^{
+            [[SentryClient sharedClient] appendStacktraceToEvent:event];
+            [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
+            }];
+        }];
+    }else{
+        [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
+        }];
+    }
+}
+
++ (void)reportErrorWithMainStackFrame:(NSError *)error
+{
+    SentryEvent *event = [[SentryEvent alloc] initWithLevel:kSentrySeverityError];
+    event.message = error.localizedDescription;
+    event.tags = error.userInfo;
+    event.extra = [[self sharedInstance] queryDDLog];
+    NSArray *mainStackFrames = [BSBacktraceLogger bs_backtraceOfMainThread];
+    SentryThread *thread = [[SentryThread alloc] initWithThreadId:@(0)];
+    SentryStacktrace *stackTrace = [[SentryStacktrace alloc] initWithFrames:mainStackFrames registers:@{}];
+    thread.stacktrace = stackTrace;
+    event.threads = @[thread];
     [[SentryClient sharedClient] sendEvent:event withCompletionHandler:^(NSError * _Nullable error) {
     }];
 }
