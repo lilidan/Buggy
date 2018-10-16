@@ -73,7 +73,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
                                 SentrySWReplacement({
         if (nil != SentryClient.sharedClient) {
             NSString *viewControllerName = [CommonEventTracker sanitizeViewControllerName:[NSString stringWithFormat:@"%@", self]];
-            NSString *logInfo = [NSString stringWithFormat:@"ViewDidAppear:%@",viewControllerName];
+            NSString *logInfo = [NSString stringWithFormat:@"ViewDidAppear:%@-%@",viewControllerName,[self title]];
             DDLogInfo(logInfo);
         }
         SentrySWCallOriginal(animated);
