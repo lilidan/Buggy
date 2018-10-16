@@ -21,7 +21,7 @@
 
 - (BOOL)application:(__unused UIApplication*) application didFinishLaunchingWithOptions:(__unused NSDictionary*) launchOptions
 {
-    [Buggy installWithSentryToken:@"https://c57c6ad155a04955b934e4f164e655b7@sentry.io/1279289"];
+    [Buggy installWithSentryToken:@""];
     self.crasher = [[Crasher alloc] init];
     self.crashToHanlder = [[CrashToHandle alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
