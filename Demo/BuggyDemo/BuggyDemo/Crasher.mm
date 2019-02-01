@@ -157,6 +157,7 @@ int g_crasher_denominator = 0;
 }
 
 - (void) accessDeallocatedObject
+
 {
 //    NSArray* array = [[NSArray alloc] initWithObjects:@"", nil];
 //    [array release];

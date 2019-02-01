@@ -16,7 +16,6 @@
     dispatch_once(&onceToken, ^{
         Class dClass=NSClassFromString(@"NSCache");
         [self safe_exchangeInstanceMethod:dClass originalSel:@selector(setObject:forKey:) newSel:@selector(safe_setObject:forKey:)];
-        
         [self safe_exchangeInstanceMethod:dClass originalSel:@selector(setObject:forKey:cost:) newSel:@selector(safe_setObject:forKey:cost:)];
     });
 }

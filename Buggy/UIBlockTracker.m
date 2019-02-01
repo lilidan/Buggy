@@ -47,11 +47,20 @@
 
 static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
 {
-    UIBlockTracker *moniotr = (__bridge UIBlockTracker*)info;
     
-    moniotr->activity = activity;
-    dispatch_semaphore_t semaphore = moniotr->semaphore;
-    dispatch_semaphore_signal(semaphore);
+    if (activity == kCFRunLoopBeforeWaiting) {
+        NSLog(@"------------------%f",CACurrentMediaTime());
+    }
+    if (activity == kCFRunLoopAfterWaiting) {
+        NSLog(@"======%f",CACurrentMediaTime());
+    }
+    
+    
+//    UIBlockTracker *moniotr = (__bridge UIBlockTracker*)info;
+//
+//    moniotr->activity = activity;
+//    dispatch_semaphore_t semaphore = moniotr->semaphore;
+//    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)stop
@@ -75,43 +84,47 @@ static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActi
     // 注册RunLoop状态观察
     CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
     CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
-                                                            kCFRunLoopAllActivities,
+                                                            kCFRunLoopAfterWaiting|kCFRunLoopBeforeWaiting
+                                                            
+                                                            ,
                                                             YES,
                                                             0,
                                                             &runLoopObserverCallBack,
                                                             &context);
-    CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
-    
-    // 在子线程监控时长
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        while (YES)
-        {
-            long st = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100*NSEC_PER_MSEC));
-            if (st != 0)
-            {
-                if (!observer)
-                {
-                    timeoutCount = 0;
-                    semaphore = 0;
-                    activity = 0;
-                    return;
-                }
-                
-                if (activity==kCFRunLoopBeforeSources || activity==kCFRunLoopAfterWaiting)
-                {
-                    if (++timeoutCount < 5)
-                        continue;
-                    
-                    if (!self.lastReportTime || [[NSDate date] timeIntervalSinceDate:self.lastReportTime] > 10.f) {
-                        NSError *error = [NSError errorWithDomain:@"UIApplicationDidMainRunloopBlock4" code:6667 userInfo:@{NSLocalizedDescriptionKey:@"UIApplicationDidMainRunloopBlock4",@"cpuUsage":@([self getCpuUsage])}];
-                        [Buggy reportErrorWithMainStackFrame:error];
-                    }
-                    self.lastReportTime = [NSDate date];
-                }
-            }
-            timeoutCount = 0;
-        }
-    });
+    CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopDefaultMode);
+//
+//    // 在子线程监控时长
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        while (YES)
+//        {
+//            long st = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 100*NSEC_PER_MSEC));
+//            if (st != 0)
+//            {
+//                if (!observer)
+//                {
+//                    timeoutCount = 0;
+//                    semaphore = 0;
+//                    activity = 0;
+//                    return;
+//                }
+//
+//
+//                if (activity==kCFRunLoopBeforeSources || activity==kCFRunLoopAfterWaiting)
+//                {
+//                    if (++timeoutCount < 5)
+//                        continue;
+//
+//                    if (!self.lastReportTime || [[NSDate date] timeIntervalSinceDate:self.lastReportTime] > 10.f) {
+//                        NSError *error = [NSError errorWithDomain:@"UIApplicationDidMainRunloopBlock4" code:6667 userInfo:@{NSLocalizedDescriptionKey:@"UIApplicationDidMainRunloopBlock4",@"cpuUsage":@([self getCpuUsage])}];
+//                        [Buggy reportErrorWithMainStackFrame:error];
+//                    }
+//                    self.lastReportTime = [NSDate date];
+//                }
+//
+//            }
+//            timeoutCount = 0;
+//        }
+//    });
 }
 
 
